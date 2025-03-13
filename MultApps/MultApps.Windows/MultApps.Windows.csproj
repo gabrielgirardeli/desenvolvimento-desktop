@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6D7DEB23-2F5F-4DCF-84F5-D001FEAE1B42}</ProjectGuid>
+    <ProjectGuid>{01CD2565-CF8F-4CD5-B1CC-7040E65E260F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>MultApps.windows</RootNamespace>
-    <AssemblyName>MultApps.windows</AssemblyName>
+    <RootNamespace>MultApps.Windows</RootNamespace>
+    <AssemblyName>MultApps.Windows</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,14 +46,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassificacaoImc.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCalculadoraIMC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCalculadoraIMC.Designer.cs">
+      <DependentUpon>FrmCalculadoraIMC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImcImagem.cs" />
+    <Compile Include="Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Principal.Designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmCalculadoraIMC.resx">
+      <DependentUpon>FrmCalculadoraIMC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
