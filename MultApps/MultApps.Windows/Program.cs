@@ -14,9 +14,12 @@ namespace MultApps.Windows
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            SplashScreen splashScreen = new SplashScreen(); 
+            splashScreen.ShowDialog();
             Application.Run(new Principal());
+            Application.EnableVisualStyles();
+            
+            
         }
     }
 }
