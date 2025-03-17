@@ -34,6 +34,41 @@ namespace MultApps.Windows
                 return;
             }
 
+            int idade = DateTime.Now.Year - dataNascimento.Year;
+            if (DateTime.Now < dataNascimento.AddYears(idade))
+                idade--;  // Ajusta a idade se a pessoa ainda não fez aniversário neste ano
+
+            // Verifica o sexo selecionado
+            string sexo = cbmSexo.SelectedItem.ToString();
+
+            // Lógica de aposentadoria
+            bool podeAposentar = false;
+
+            // Regras de aposentadoria
+            if (sexo == "Masculino" && idade >= 65 && tempoContribuicao >= 15)
+            {
+                podeAposentar = true;
+            }
+            else if (sexo == "Feminino" && idade >= 60 && tempoContribuicao >= 15)
+            {
+                podeAposentar = true;
+            }
+
+            // Exibe a mensagem de resultado
+            if (podeAposentar)
+            {
+                lblResultado.Text = "Você pode dar entrada no processo de aposentadoria.";
+                lblResultado.ForeColor = System.Drawing.Color.Green;
+            }
+            else
+            {
+                lblResultado.Text = "Você não cumpre os requisitos para se aposentar.";
+                lblResultado.ForeColor = System.Drawing.Color.Red;
+            }
+
+            // Exibe o painel de resultado
+            pnlResultado.Show();
+
         }
     }
 }

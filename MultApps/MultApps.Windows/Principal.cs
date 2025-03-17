@@ -22,6 +22,15 @@ namespace MultApps.Windows
             var form = new FrmCalculadoraIMC();
             form.MdiParent = this;
             form.Show();
+
         }
+       
+     
     }
-}
+    
+
+
+
+
+ }
+

@@ -35,8 +35,8 @@
             this.mtbDataNascimento = new System.Windows.Forms.MaskedTextBox();
             this.lblTempoDeContribuicao = new System.Windows.Forms.Label();
             this.pnlResultado = new System.Windows.Forms.Panel();
-            this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             this.lblResultado = new System.Windows.Forms.Label();
+            this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.txtTempoContribuicao = new System.Windows.Forms.TextBox();
             this.pnlResultado.SuspendLayout();
@@ -110,15 +110,15 @@
             // pnlResultado
             // 
             this.pnlResultado.Controls.Add(this.lblResultado);
-            this.pnlResultado.Location = new System.Drawing.Point(343, 301);
+            this.pnlResultado.Location = new System.Drawing.Point(278, 308);
             this.pnlResultado.Name = "pnlResultado";
-            this.pnlResultado.Size = new System.Drawing.Size(420, 57);
+            this.pnlResultado.Size = new System.Drawing.Size(497, 50);
             this.pnlResultado.TabIndex = 9;
             // 
             // lblResultado
             // 
             this.lblResultado.AutoSize = true;
-            this.lblResultado.Location = new System.Drawing.Point(91, 23);
+            this.lblResultado.Location = new System.Drawing.Point(236, 23);
             this.lblResultado.Name = "lblResultado";
             this.lblResultado.Size = new System.Drawing.Size(0, 13);
             this.lblResultado.TabIndex = 0;
