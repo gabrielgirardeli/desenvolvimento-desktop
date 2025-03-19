@@ -38,10 +38,11 @@
             this.btnGerarCarterinha = new System.Windows.Forms.Button();
             this.picIcone = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblCpf2 = new System.Windows.Forms.Label();
+            this.lblZona = new System.Windows.Forms.Label();
+            this.lblIdade = new System.Windows.Forms.Label();
             this.lblCpf = new System.Windows.Forms.Label();
             this.lblNome = new System.Windows.Forms.Label();
-            this.lblIdade = new System.Windows.Forms.Label();
-            this.lblZona = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picIcone)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -120,7 +121,7 @@
             // 
             // picIcone
             // 
-            this.picIcone.Location = new System.Drawing.Point(54, 33);
+            this.picIcone.Location = new System.Drawing.Point(45, 33);
             this.picIcone.Name = "picIcone";
             this.picIcone.Size = new System.Drawing.Size(186, 115);
             this.picIcone.TabIndex = 8;
@@ -128,6 +129,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblCpf2);
             this.panel1.Controls.Add(this.lblZona);
             this.panel1.Controls.Add(this.lblIdade);
             this.panel1.Controls.Add(this.lblCpf);
@@ -137,6 +139,38 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(289, 333);
             this.panel1.TabIndex = 9;
+            // 
+            // lblCpf2
+            // 
+            this.lblCpf2.AutoSize = true;
+            this.lblCpf2.Location = new System.Drawing.Point(82, 205);
+            this.lblCpf2.Name = "lblCpf2";
+            this.lblCpf2.Size = new System.Drawing.Size(27, 13);
+            this.lblCpf2.TabIndex = 13;
+            this.lblCpf2.Text = "CPF";
+            this.lblCpf2.Visible = false;
+            // 
+            // lblZona
+            // 
+            this.lblZona.AutoSize = true;
+            this.lblZona.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblZona.Location = new System.Drawing.Point(39, 291);
+            this.lblZona.Name = "lblZona";
+            this.lblZona.Size = new System.Drawing.Size(36, 13);
+            this.lblZona.TabIndex = 12;
+            this.lblZona.Text = "Zona";
+            this.lblZona.Visible = false;
+            // 
+            // lblIdade
+            // 
+            this.lblIdade.AutoSize = true;
+            this.lblIdade.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIdade.Location = new System.Drawing.Point(82, 238);
+            this.lblIdade.Name = "lblIdade";
+            this.lblIdade.Size = new System.Drawing.Size(39, 13);
+            this.lblIdade.TabIndex = 11;
+            this.lblIdade.Text = "Idade";
+            this.lblIdade.Visible = false;
             // 
             // lblCpf
             // 
@@ -158,28 +192,6 @@
             this.lblNome.TabIndex = 9;
             this.lblNome.Text = "Nome do  Visitante";
             this.lblNome.Visible = false;
-            // 
-            // lblIdade
-            // 
-            this.lblIdade.AutoSize = true;
-            this.lblIdade.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdade.Location = new System.Drawing.Point(75, 226);
-            this.lblIdade.Name = "lblIdade";
-            this.lblIdade.Size = new System.Drawing.Size(39, 13);
-            this.lblIdade.TabIndex = 11;
-            this.lblIdade.Text = "Idade";
-            this.lblIdade.Visible = false;
-            // 
-            // lblZona
-            // 
-            this.lblZona.AutoSize = true;
-            this.lblZona.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblZona.Location = new System.Drawing.Point(79, 253);
-            this.lblZona.Name = "lblZona";
-            this.lblZona.Size = new System.Drawing.Size(36, 13);
-            this.lblZona.TabIndex = 12;
-            this.lblZona.Text = "Zona";
-            this.lblZona.Visible = false;
             // 
             // frmCarterinha
             // 
@@ -222,5 +234,6 @@
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.Label lblIdade;
         private System.Windows.Forms.Label lblZona;
+        private System.Windows.Forms.Label lblCpf2;
     }
 }

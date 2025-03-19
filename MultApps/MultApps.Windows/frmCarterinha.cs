@@ -19,7 +19,6 @@ namespace MultApps.Windows
 
         private void btnGerarCarterinha_Click(object sender, EventArgs e)
         {
-
             string nome = txtNome.Text;
             string cpf = txtCPF.Text;
             DateTime dataNascimento;
@@ -47,14 +46,29 @@ namespace MultApps.Windows
 
                 // Atualiza a cor de fundo da carteirinha e o ícone
                 UpdateCardColor(zona);
-                picIcone.ImageLocation = icone; // Caminho do ícone
+
+                // Carrega a imagem no PictureBox
+                try
+                {
+                    picIcone.Load(icone); // Carrega a imagem do ícone no PictureBox
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao carregar a imagem: " + ex.Message);
+                }
             }
             else
             {
                 MessageBox.Show("Por favor, insira dados válidos.");
             }
-        }
 
+            panel1.Visible = true;
+            lblNome.Visible = true;
+            lblIdade.Visible = true;
+            lblCpf.Visible = true;
+            lblZona.Visible = true;
+       }
+      
         // Função para calcular a idade com base na data de nascimento
         private int CalculateAge(DateTime dataNascimento)
         {
@@ -85,7 +99,7 @@ namespace MultApps.Windows
         {
             if (cpf.Length == 14) // Valida o formato do CPF
             {
-                return cpf.Substring(0, 3) + ".XXX.XXX." + cpf.Substring(7, 3) + "-XX";
+                return "XXX" + cpf.Substring(3, 3) + "." + cpf.Substring(9, 5) + "XX"; ;
             }
             else
             {
@@ -102,17 +116,17 @@ namespace MultApps.Windows
         // Função para obter o ícone de acordo com a idade
         private string ObterIcone(int idade)
         {
+            // Caminhos relativos para as imagens
             if (idade <= 12)
-                return @"C:\Imagens\criança.png"; // Caminho do ícone para criança
+                return @"https://cdn-icons-png.flaticon.com/128/9136/9136536.png"; // Caminho para a imagem da criança
             else if (idade >= 60)
-                return @"C:\Imagens\idoso.png"; // Caminho do ícone para idoso
+                return @"https://cdn-icons-png.flaticon.com/128/18612/18612539.png"; // Caminho para a imagem do idoso
             else if (idade >= 13 && idade <= 35)
-                return @"C:\Imagens\jovem.png"; // Caminho do ícone para jovem
+                return @"https://cdn-icons-png.flaticon.com/128/4439/4439795.png"; // Caminho para a imagem do jovem
             else
-                return @"C:\Imagens\adulto.png"; // Caminho do ícone para adulto
+                return @"https://cdn-icons-png.flaticon.com/128/6748/6748122.png"; // Caminho para a imagem do adulto
         }
 
-        // Função para atualizar a cor de fundo da carteirinha com base na zona
         private void UpdateCardColor(string zona)
         {
             if (zona.Contains("Azul"))
@@ -125,5 +139,6 @@ namespace MultApps.Windows
                 BackColor = System.Drawing.Color.Purple; // Cor para Zona Roxa (Adultos)
         }
     }
+    
 }
      
