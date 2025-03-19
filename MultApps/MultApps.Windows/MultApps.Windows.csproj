@@ -53,6 +53,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAcai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAcai.Designer.cs">
+      <DependentUpon>frmAcai.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAposentadoria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAcai.resx">
+      <DependentUpon>frmAcai.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAposentadoria.resx">
       <DependentUpon>frmAposentadoria.cs</DependentUpon>
     </EmbeddedResource>
