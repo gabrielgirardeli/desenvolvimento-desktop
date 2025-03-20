@@ -139,5 +139,26 @@
   <ItemGroup>
     <None Include="Resources\da390a7d06548be59c0f863117c9b93e.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\granola-tradicional-caixa-10-kg-33-1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\criativo-661899b068d8aimg-2024-04-11661899b068d8f.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bc939ae4-d50a-43af-90f0-ebad84f1e5fb.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wpid-wp-1426170095859.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\aaf5613f69fe68719d09b95c0188a897.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\763af2aff49d376152b62e23140155c3.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

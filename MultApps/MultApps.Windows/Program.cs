@@ -16,7 +16,7 @@ namespace MultApps.Windows
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmCarterinha());
+            Application.Run(new frmAcai());
         }
     }
 }
