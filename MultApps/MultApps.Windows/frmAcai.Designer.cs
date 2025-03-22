@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBoxPedidos = new System.Windows.Forms.ListBox();
             this.label27 = new System.Windows.Forms.Label();
             this.btnPedido = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -65,6 +65,7 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.numGranola = new System.Windows.Forms.NumericUpDown();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -74,6 +75,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.numMorango = new System.Windows.Forms.NumericUpDown();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
@@ -95,8 +97,6 @@
             this.panel16 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.numGranola = new System.Windows.Forms.NumericUpDown();
-            this.numMorango = new System.Windows.Forms.NumericUpDown();
             this.panel2.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -110,11 +110,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numGranola)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numBanana)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numMorango)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numLeite)).BeginInit();
@@ -126,14 +128,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.numNutella)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numGranola)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numMorango)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.listBox1);
+            this.panel2.Controls.Add(this.listBoxPedidos);
             this.panel2.Controls.Add(this.label27);
             this.panel2.Controls.Add(this.btnPedido);
             this.panel2.Controls.Add(this.panel10);
@@ -142,13 +142,13 @@
             this.panel2.Size = new System.Drawing.Size(289, 837);
             this.panel2.TabIndex = 1;
             // 
-            // listBox1
+            // listBoxPedidos
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(14, 117);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(232, 290);
-            this.listBox1.TabIndex = 3;
+            this.listBoxPedidos.FormattingEnabled = true;
+            this.listBoxPedidos.Location = new System.Drawing.Point(14, 117);
+            this.listBoxPedidos.Name = "listBoxPedidos";
+            this.listBoxPedidos.Size = new System.Drawing.Size(232, 290);
+            this.listBoxPedidos.TabIndex = 3;
             // 
             // label27
             // 
@@ -493,6 +493,13 @@
             this.panel9.Size = new System.Drawing.Size(178, 212);
             this.panel9.TabIndex = 6;
             // 
+            // numGranola
+            // 
+            this.numGranola.Location = new System.Drawing.Point(22, 177);
+            this.numGranola.Name = "numGranola";
+            this.numGranola.Size = new System.Drawing.Size(120, 20);
+            this.numGranola.TabIndex = 3;
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -583,6 +590,13 @@
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(178, 212);
             this.panel12.TabIndex = 9;
+            // 
+            // numMorango
+            // 
+            this.numMorango.Location = new System.Drawing.Point(26, 177);
+            this.numMorango.Name = "numMorango";
+            this.numMorango.Size = new System.Drawing.Size(120, 20);
+            this.numMorango.TabIndex = 3;
             // 
             // label17
             // 
@@ -731,6 +745,7 @@
             this.numNutella.Name = "numNutella";
             this.numNutella.Size = new System.Drawing.Size(120, 20);
             this.numNutella.TabIndex = 3;
+            this.numNutella.Click += new System.EventHandler(this.btnNutella_Click);
             // 
             // label23
             // 
@@ -797,20 +812,6 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // numGranola
-            // 
-            this.numGranola.Location = new System.Drawing.Point(22, 177);
-            this.numGranola.Name = "numGranola";
-            this.numGranola.Size = new System.Drawing.Size(120, 20);
-            this.numGranola.TabIndex = 3;
-            // 
-            // numMorango
-            // 
-            this.numMorango.Location = new System.Drawing.Point(26, 177);
-            this.numMorango.Name = "numMorango";
-            this.numMorango.Size = new System.Drawing.Size(120, 20);
-            this.numMorango.TabIndex = 3;
-            // 
             // frmAcai
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -843,6 +844,7 @@
             this.panel8.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numGranola)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
@@ -850,6 +852,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.panel12.ResumeLayout(false);
             this.panel12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numMorango)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
@@ -864,8 +867,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numNutella)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numGranola)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numMorango)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -934,7 +935,7 @@
         private System.Windows.Forms.NumericUpDown numNutella;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBoxPedidos;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.NumericUpDown numGranola;

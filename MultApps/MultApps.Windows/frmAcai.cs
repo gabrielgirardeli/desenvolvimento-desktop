@@ -17,75 +17,203 @@ namespace MultApps.Windows
             InitializeComponent();
         }
 
+        // Variáveis para armazenar os valores
         string nome;
         string tamanhoCopo;
-        string frutaEscolhida;
-        string coberturaEscolhida;
+        List<PedidoItem> itensPedido = new List<PedidoItem>();
 
-        double precoTamanhoCopo = 0;
-        double precoFruta = 2.00;  // Exemplo: cada fruta custa 2.00
-        double precoComplemento = 1.50;  // Exemplo: cada complemento custa 1.50
-        double precoCobertura = 3.00;
+        decimal precoTamanhoCopo = 0;
+        decimal precoFruta = 2.00m;  // Exemplo: cada fruta custa 2.00
+        decimal precoCobertura = 3.00m; // Exemplo: cada cobertura custa 3.00
+        decimal precoComplemento = 1.50m; // Exemplo: cada complemento custa 1
+
+
         private void btnPedido_Click(object sender, EventArgs e)
         {
-            nome = txtNome.Text; // Coletar o nome
+            nome = txtNome.Text;  // txtNome é o TextBox para o nome do cliente
+            if (string.IsNullOrEmpty(nome))
+            {
+                MessageBox.Show("Por favor, insira seu nome.");
+                return;
+            }
 
-            // Coletar o tamanho do copo
-            if (btnPequeno.Checked) { tamanhoCopo = "Pequeno"; precoTamanhoCopo = 15.00; }
-            else if (btnMedio.Checked) { tamanhoCopo = "Médio"; precoTamanhoCopo = 20.00; }
-            else if (btnGrande.Checked) { tamanhoCopo = "Grande"; precoTamanhoCopo = 25.00; }
-            else if (btnFamilia.Checked) { tamanhoCopo = "Família"; precoTamanhoCopo = 35.00; }
+            // 2. Seleção do tamanho do copo
+            if (tamanhoCopo == null)
+            {
+                MessageBox.Show("Por favor, selecione o tamanho do copo.");
+                return;
+            }
 
-            // Coletar as frutas escolhidas
-            frutaEscolhida = "";
-            if (numBanana.Value > 0) { frutaEscolhida += $"Banana ({numBanana.Value}), "; }
-            if (numMorango.Value > 0) { frutaEscolhida += $"Morango ({numMorango.Value}), "; }
-
-            // Coletar as coberturas escolhidas
-            coberturaEscolhida = "";
-            if (numGranola.Value > 0) { coberturaEscolhida += $"Granola ({numGranola.Value}), "; }
-            if (numLeite.Value > 0) { coberturaEscolhida += $"Leite Condensado ({numLeite.Value}), "; }
-            if (numNutella.Value > 0) { coberturaEscolhida += $"Nutella ({numNutella.Value}), "; }
-
-            // Remover a última vírgula e espaço
-            if (frutaEscolhida.Length > 0) { frutaEscolhida = frutaEscolhida.Substring(0, frutaEscolhida.Length - 2); }
-            if (coberturaEscolhida.Length > 0) { coberturaEscolhida = coberturaEscolhida.Substring(0, coberturaEscolhida.Length - 2); }
-
-            // Gerar uma senha única para o pedido
-            string senha = DateTime.Now.ToString("yyyyMMddHHmmss");
-
-            // Exibir as informações do pedido
-            listBox1.Items.Clear();
-            listBox1.Items.Add($"Nome: {nome}");
-            listBox1.Items.Add($"Tamanho: {tamanhoCopo}");
-            listBox1.Items.Add($"Frutas: {frutaEscolhida}");
-            listBox1.Items.Add($"Coberturas: {coberturaEscolhida}");
-            listBox1.Items.Add($"Senha: {senha}");
-            listBox1.Items.Add($"Total: R$ {CalcularTotal():F2}");
+            listBoxPedidos.Items.Add(new PedidoItem("Açaí 300ml", 1, 15.00m));
+            listBoxPedidos.Items.Add(new PedidoItem("Banana", 1, 2.50m));
+            listBoxPedidos.Items.Add(new PedidoItem("Morango", 1, 3.00m));
+            listBoxPedidos.Items.Add(new PedidoItem("Leite Condensado", 1, 2.00m));
+            listBoxPedidos.Items.Add(new PedidoItem("Paçoca", 1, 1.50m));
+            listBoxPedidos.Items.Add(new PedidoItem("Granola", 1, 3.50m));
+            listBoxPedidos.Items.Add(new PedidoItem("Nutella", 1, 8.00m));
+            listBoxPedidos.Items.Add($"Nome: {nome}");
+            string senha = GerarSenhaCurta();
+            listBoxPedidos.Items.Add($"Senha: {senha}");
+            listBoxPedidos.Items.Add($"Total: R$ {CalcularTotal():F2}");
+            decimal total = CalcularTotal();
+            listBoxPedidos.Items.Add($"Total: R$ {total:F2}");
         }
         // Exibir informações
-       
-        private void btnTamanhoCopo_Click(object sender, EventArgs e)
+
+
+
+
+        private void AdicionarItemSelecionado(string nomeItem, decimal quantidade, decimal preco)
         {
-            // Define o tamanho do copo com base no botão clicado
-            Button clickedButton = sender as Button;
+            if (quantidade > 0)  // Verifica se a quantidade é maior que 0
+            {
+                // Adiciona item na lista de pedido
+                itensPedido.Add(new PedidoItem(nomeItem, (int)quantidade, preco * quantidade));
 
-            // Define o tamanho do copo
-            tamanhoCopo = clickedButton.Text;
+                // Adiciona item ao ListBox
+                listBoxPedidos.Items.Add($"{nomeItem} (x{quantidade}) - R$ {preco * quantidade:F2}");
+            }
 
-            double total = precoTamanhoCopo;
-
-            // Adicionar preço das frutas
-            if (numBanana.Value > 0) { total += precoFruta * (double)numBanana.Value; }
-            if (numMorango.Value > 0) { total += precoFruta * (double)numMorango.Value; }
-
-            // Adicionar preço das coberturas
-            if (numGranola.Value > 0) { total += precoCobertura * (double)numGranola.Value; }
-            if (numLeite.Value > 0) { total += precoCobertura * (double)numLeite.Value; }
-            if (numNutella.Value > 0) { total += precoCobertura * (double)numNutella.Value; }
-
+        }
+            // Método para calcular o total
+            private decimal CalcularTotal()
+        {
+            decimal total = 0;
+            foreach (var item in itensPedido)
+            {
+                total += item.Preco;
+            }
             return total;
         }
 
-    }
+     
+
+
+
+        // Método para gerar uma senha baseada no horário
+        private string GerarSenhaCurta()
+        {
+            DateTime agora = DateTime.Now;
+            return $"{agora:MMddHHmmss}"; // Exemplo: 032112451234
+        }
+
+        // Evento de selecionar o tamanho do copo
+        private void btnTamanhoCopo_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            switch (btn.Name)
+            {
+                case "btnPequeno":
+                    tamanhoCopo = "Pequeno";
+                    precoTamanhoCopo = 15.00m;
+                    break;
+                case "btnMedio":
+                    tamanhoCopo = "Médio";
+                    precoTamanhoCopo = 20.00m;
+                    break;
+                case "btnGrande":
+                    tamanhoCopo = "Grande";
+                    precoTamanhoCopo = 25.00m;
+                    break;
+                case "btnFamilia":
+                    tamanhoCopo = "Família";
+                    precoTamanhoCopo = 35.00m;
+                    break;
+                default:
+                    break;
+            }
+        }
+ 
+        private void btnRemover_Click(object sender, EventArgs e)
+        {
+            if (listBoxPedidos.SelectedItem != null)
+            {
+                listBoxPedidos.Items.Remove(listBoxPedidos.SelectedItem);
+            }
+            else
+            {
+                MessageBox.Show("Selecione um item para remover.");
+            }
+        }
+
+        private void btnBanana_Click(object sender, EventArgs e)
+        {
+            // Torna o NumericUpDown da Banana visível quando o botão de Banana for clicado
+            numBanana.Visible = !numBanana.Visible;
+        }
+
+        private void btnMorango_Click(object sender, EventArgs e)
+        {
+            // Torna o NumericUpDown do Morango visível
+            numMorango.Visible = !numMorango.Visible;
+        }
+
+        private void btnGranola_Click(object sender, EventArgs e)
+        {
+            // Torna o NumericUpDown da Granola visível
+            numGranola.Visible = !numGranola.Visible;
+        }
+
+        private void btnLeiteCondensado_Click(object sender, EventArgs e)
+        {
+            // Torna o NumericUpDown do Leite Condensado visível
+            numLeite.Visible = !numLeite.Visible;
+        }
+
+        private void btnNutella_Click(object sender, EventArgs e)
+        {
+            // Torna o NumericUpDown da Nutella visível
+            numNutella.Visible = !numNutella.Visible;
+        }
+
+
+        private void AdicionarComplementos()
+        {
+            decimal totalComplementos = 0;
+
+            // Adiciona Banana, se a quantidade for maior que 0
+            if (numBanana.Visible && numBanana.Value > 0)
+            {
+                decimal precoBanana = precoFruta * numBanana.Value;
+                AdicionarItemSelecionado("Banana", numBanana.Value, precoFruta);
+                totalComplementos += precoBanana;
+            }
+
+            // Adiciona Morango, se a quantidade for maior que 0
+            if (numMorango.Visible && numMorango.Value > 0)
+            {
+                decimal precoMorango = precoFruta * numMorango.Value;
+                AdicionarItemSelecionado("Morango", numMorango.Value, precoFruta);
+                totalComplementos += precoMorango;
+            }
+
+            // Adiciona Granola, se a quantidade for maior que 0
+            if (numGranola.Visible && numGranola.Value > 0)
+            {
+                decimal precoGranola = precoCobertura * numGranola.Value;
+                AdicionarItemSelecionado("Granola", numGranola.Value, precoCobertura);
+                totalComplementos += precoGranola;
+            }
+
+            // Adiciona Nutella, se a quantidade for maior que 0
+            if (numNutella.Visible && numNutella.Value > 0)
+            {
+                decimal precoNutella = precoCobertura * numNutella.Value;
+                AdicionarItemSelecionado("Nutella", numNutella.Value, precoCobertura);
+                totalComplementos += precoNutella;
+            }
+
+            // Adiciona Paçoca, se a quantidade for maior que 0
+            if (numPacoca.Visible && numPacoca.Value > 0)
+            {
+                decimal precoPacoca = precoComplemento * numPacoca.Value;
+                AdicionarItemSelecionado("Paçoca", numPacoca.Value, precoComplemento);
+                totalComplementos += precoPacoca;
+            }
+
+            // Agora, somamos o valor do copo e dos complementos
+            decimal totalPedido = precoTamanhoCopo + totalComplementos;
+
+
+    }   }    
 }

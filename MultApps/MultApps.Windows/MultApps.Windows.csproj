@@ -78,6 +78,7 @@
       <DependentUpon>frmCarterinha.cs</DependentUpon>
     </Compile>
     <Compile Include="ImcImagem.cs" />
+    <Compile Include="PedidoItem.cs" />
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
     </Compile>
