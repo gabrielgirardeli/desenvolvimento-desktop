@@ -63,6 +63,46 @@ namespace MultApps.Windows.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _763af2aff49d376152b62e23140155c3 {
+            get {
+                object obj = ResourceManager.GetObject("763af2aff49d376152b62e23140155c3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap aaf5613f69fe68719d09b95c0188a897 {
+            get {
+                object obj = ResourceManager.GetObject("aaf5613f69fe68719d09b95c0188a897", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bc939ae4_d50a_43af_90f0_ebad84f1e5fb {
+            get {
+                object obj = ResourceManager.GetObject("bc939ae4-d50a-43af-90f0-ebad84f1e5fb", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap criativo_661899b068d8aimg_2024_04_11661899b068d8f {
+            get {
+                object obj = ResourceManager.GetObject("criativo-661899b068d8aimg-2024-04-11661899b068d8f", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap da390a7d06548be59c0f863117c9b93e {
             get {
                 object obj = ResourceManager.GetObject("da390a7d06548be59c0f863117c9b93e", resourceCulture);
@@ -73,9 +113,39 @@ namespace MultApps.Windows.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap granola_tradicional_caixa_10_kg_33_1 {
+            get {
+                object obj = ResourceManager.GetObject("granola-tradicional-caixa-10-kg-33-1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap images {
+            get {
+                object obj = ResourceManager.GetObject("images", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pngtree_letter_g_logo_png_image_4000891 {
             get {
                 object obj = ResourceManager.GetObject("pngtree-letter-g-logo-png-image_4000891", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wpid_wp_1426170095859 {
+            get {
+                object obj = ResourceManager.GetObject("wpid-wp-1426170095859", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
