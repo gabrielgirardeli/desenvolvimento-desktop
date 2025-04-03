@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MultApps.Models.Entities
 {
-    internal class Categoria : EntidadesBase
+    public class Categoria : EntidadesBase
     {
         
         public string Nome { get; set; }
