@@ -12,7 +12,7 @@ namespace MultApps.Models.repositories
 {
     public class CategoriaRepositories
     {
-        public string ConnectionString = "Server=local;Database=multapps_dev;Uid=root,Pwd=root";
+        public string ConnectionString = "Server=localhost;Database=multapps_dev;Uid=root;Pwd=root";
 
 
         public bool CadastrarCategoria(Categoria categoria)
@@ -24,8 +24,8 @@ namespace MultApps.Models.repositories
                                   
 
                 var parametros = new DynamicParameters();
-                parametros.Add("Nome", categoria.Nome);
-                parametros.Add("Status", categoria.Status);
+                parametros.Add("@Nome", categoria.Nome);
+                parametros.Add("@Status", categoria.Status);
                 
                 var resultado = db.Execute(comandoSql,parametros);
                 return resultado > 0;

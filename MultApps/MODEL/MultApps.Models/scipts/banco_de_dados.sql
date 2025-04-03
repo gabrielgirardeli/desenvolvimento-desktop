@@ -7,7 +7,7 @@ use  multapps_dev;
  nome  varchar(100) not null,
 DataCriacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     DataAlteracao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
- status enum ('inativo','ativo','excluido') not null
+ status enum ('ativo','inativo','excluido') not null
  );
  
  
@@ -20,9 +20,10 @@ DataCriacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
  quantidade_estoque int not null,
 DataCriacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 DataAlteracao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
- status enum ('inativo','ativo','excluido') not null,
+ status enum ('ativo','inativo','excluido') not null,
  foreign key (categoria_id) references categoria (Id)
    
 
 );
    
+
