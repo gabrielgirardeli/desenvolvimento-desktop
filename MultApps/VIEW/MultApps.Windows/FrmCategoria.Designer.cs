@@ -32,6 +32,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbStatus = new System.Windows.Forms.ComboBox();
+            this.btnSalvar = new System.Windows.Forms.Button();
             this.txtDataAlteracao = new System.Windows.Forms.TextBox();
             this.txtDataCriacao = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
@@ -41,9 +43,9 @@
             this.lblDataCriacao = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnSalvar = new System.Windows.Forms.Button();
-            this.cmbStatus = new System.Windows.Forms.ComboBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -84,6 +86,28 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cadastro  nova categoria";
+            // 
+            // cmbStatus
+            // 
+            this.cmbStatus.FormattingEnabled = true;
+            this.cmbStatus.Items.AddRange(new object[] {
+            "Inativo",
+            "Ativo ",
+            "Excluido"});
+            this.cmbStatus.Location = new System.Drawing.Point(520, 80);
+            this.cmbStatus.Name = "cmbStatus";
+            this.cmbStatus.Size = new System.Drawing.Size(121, 21);
+            this.cmbStatus.TabIndex = 23;
+            // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Location = new System.Drawing.Point(627, 124);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(86, 23);
+            this.btnSalvar.TabIndex = 22;
+            this.btnSalvar.Text = "SALVAR ";
+            this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // txtDataAlteracao
             // 
@@ -161,27 +185,14 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "id";
             // 
-            // btnSalvar
+            // dataGridView1
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(627, 124);
-            this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(86, 23);
-            this.btnSalvar.TabIndex = 22;
-            this.btnSalvar.Text = "SALVAR ";
-            this.btnSalvar.UseVisualStyleBackColor = true;
-            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
-            // 
-            // cmbStatus
-            // 
-            this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Items.AddRange(new object[] {
-            "Inativo",
-            "Ativo ",
-            "Excluido"});
-            this.cmbStatus.Location = new System.Drawing.Point(520, 80);
-            this.cmbStatus.Name = "cmbStatus";
-            this.cmbStatus.Size = new System.Drawing.Size(121, 21);
-            this.cmbStatus.TabIndex = 23;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 283);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(800, 167);
+            this.dataGridView1.TabIndex = 5;
             // 
             // FrmCategoria
             // 
@@ -189,13 +200,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Name = "FrmCategoria";
             this.Text = "FrmCategoria";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmCategoria_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,5 +231,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbStatus;
         private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

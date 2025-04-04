@@ -18,6 +18,9 @@ namespace MultApps.Windows
         public FrmCategoria()
         {
             InitializeComponent();
+            CarregarTodasCategoria();
+            this.KeyPreview = true;
+
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -34,12 +37,71 @@ namespace MultApps.Windows
             {
                 MessageBox.Show("Categoria cadastra com sucesso");
             }
-            else 
+            else
             {
                 MessageBox.Show("Erro ao cadastrar categoria");
             }
-
+            CarregarTodasCategoria();
 
         }
-    }
+        private void CarregarTodasCategoria()
+        {
+            var categoriaRepositories = new CategoriaRepositories();
+            var listaDeCategorias = categoriaRepositories.ListarTodasCategoria();
+
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.Columns.Clear();
+
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Id",
+                HeaderText = "ID",
+
+            });
+
+
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Nome",
+                HeaderText = "Nome da categoria",
+
+            });
+
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "DataCadastro",
+                HeaderText = "Data de Cadastro",
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy HH:MM" },
+                MinimumWidth = 200
+            });
+
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "DataAlteracao",
+                HeaderText = "Data de Alteracao",
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy HH:MM" },
+                MinimumWidth = 200
+            });
+
+
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Status",
+                HeaderText = "Status"
+
+            });
+
+
+            dataGridView1.DataSource = listaDeCategorias;
+
+        }
+
+        private void FrmCategoria_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F5)
+            {
+                
+                CarregarTodasCategoria();
+            }
+        }   }
 }

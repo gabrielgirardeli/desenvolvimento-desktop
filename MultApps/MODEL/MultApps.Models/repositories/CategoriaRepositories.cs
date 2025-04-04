@@ -31,5 +31,16 @@ namespace MultApps.Models.repositories
                 return resultado > 0;
           }
         }
+
+        public List<Categoria> ListarTodasCategoria()
+        { 
+            using (IDbConnection db = new MySqlConnection(ConnectionString)) 
+            {
+                var comandoSql = @"SELECT * FROM categoria";
+                var resultado  = db.Query<Categoria>(comandoSql).ToList();
+                return resultado;
+            }
+             
+        }
     } 
 }
