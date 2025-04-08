@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MultApps.Models.Entities.Abstract
 {
-    public class EntidadesBase
+    public abstract class EntidadesBase
     {
       public int Id { get; set; }
       public DateTime DataCriacao { get; set; }

@@ -15,6 +15,8 @@ namespace MultApps.Windows
 {
     public partial class FrmCategoria : Form
     {
+        private object txtDataCadastro;
+
         public FrmCategoria()
         {
             InitializeComponent();
@@ -93,6 +95,8 @@ namespace MultApps.Windows
 
 
             dataGridView1.DataSource = listaDeCategorias;
+            dataGridView1.CellFormatting += dataGridView1_CellFormatting;
+
 
         }
 
@@ -100,8 +104,54 @@ namespace MultApps.Windows
         {
             if (e.KeyCode == Keys.F5)
             {
-                
+
                 CarregarTodasCategoria();
             }
-        }   }
-}
+        }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dataGridView1.Columns[e.ColumnIndex].DataPropertyName == "Status")
+            {
+                if (e.Value != null)
+                {
+                    StatusEnum status = (StatusEnum)e.Value;
+                    switch (status)
+                    {
+                        case StatusEnum.inativo:
+                            e.CellStyle.ForeColor = Color.Gray;
+                            break;
+                        case StatusEnum.ativo:
+                            e.CellStyle.ForeColor = Color.Blue;
+                            break;
+                        case StatusEnum.excluido:
+                            e.CellStyle.ForeColor = Color.Red;
+                            break;
+                    }
+                }
+            }
+        }
+
+
+
+
+
+
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+          
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            txtId.Text = string.Empty;
+            txtNome.Text = string.Empty;
+            txtDataCadastro.Text = string.Empty;
+            txtDataAlteracao.Text = string.Empty;
+            cmbStatus.SelectedIndex = -1;
+        }
+    }
+    }
+    
+
