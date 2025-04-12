@@ -77,6 +77,12 @@
     <Compile Include="frmCarterinha.Designer.cs">
       <DependentUpon>frmCarterinha.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCategoria.Designer.cs">
+      <DependentUpon>FrmCategoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="ImcImagem.cs" />
     <Compile Include="PedidoItem.cs" />
     <Compile Include="Principal.cs">
@@ -104,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCarterinha.resx">
       <DependentUpon>frmCarterinha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCategoria.resx">
+      <DependentUpon>FrmCategoria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
@@ -160,6 +169,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\763af2aff49d376152b62e23140155c3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CONTROLLER\MultApps.Controller\MultApps.Controller.csproj">
+      <Project>{1daa4648-eca4-45d0-ac95-bdbe43b964fe}</Project>
+      <Name>MultApps.Controller</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MODEL\MultApps.Models\MultApps.Models.csproj">
+      <Project>{1f8bb012-80d8-455c-b463-34ce7ee4c8d3}</Project>
+      <Name>MultApps.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
