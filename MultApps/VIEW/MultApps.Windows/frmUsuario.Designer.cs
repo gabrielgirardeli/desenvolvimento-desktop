@@ -30,6 +30,8 @@
         {
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cbmFiltra = new System.Windows.Forms.ComboBox();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
@@ -43,6 +45,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtDataAlteracao = new System.Windows.Forms.TextBox();
+            this.txtDataCriacao = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -54,7 +62,7 @@
             "Nativo",
             "Inativo",
             "Excluido"});
-            this.comboBox1.Location = new System.Drawing.Point(128, 205);
+            this.comboBox1.Location = new System.Drawing.Point(159, 316);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 0;
@@ -62,6 +70,14 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.txtDataCriacao);
+            this.panel1.Controls.Add(this.txtDataAlteracao);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.txtID);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.cbmFiltra);
             this.panel1.Controls.Add(this.btnSalvar);
             this.panel1.Controls.Add(this.btnEditar);
             this.panel1.Controls.Add(this.btnExcluir);
@@ -77,35 +93,60 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(290, 450);
+            this.panel1.Size = new System.Drawing.Size(291, 450);
             this.panel1.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(208, 291);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(50, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "STATUS";
+            // 
+            // cbmFiltra
+            // 
+            this.cbmFiltra.FormattingEnabled = true;
+            this.cbmFiltra.Items.AddRange(new object[] {
+            "Inativo",
+            "Nativo",
+            "excluir"});
+            this.cbmFiltra.Location = new System.Drawing.Point(12, 316);
+            this.cbmFiltra.Name = "cbmFiltra";
+            this.cbmFiltra.Size = new System.Drawing.Size(121, 21);
+            this.cbmFiltra.TabIndex = 11;
+            this.cbmFiltra.SelectedIndexChanged += new System.EventHandler(this.cmbFiltroStatus_SelectedIndexChanged);
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(63, 313);
+            this.btnSalvar.Location = new System.Drawing.Point(57, 400);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(152, 23);
             this.btnSalvar.TabIndex = 10;
             this.btnSalvar.Text = "SALVAR";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(160, 262);
+            this.btnEditar.Location = new System.Drawing.Point(183, 361);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(75, 23);
             this.btnEditar.TabIndex = 9;
             this.btnEditar.Text = "EDITAR";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(31, 263);
+            this.btnExcluir.Location = new System.Drawing.Point(26, 361);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(75, 23);
             this.btnExcluir.TabIndex = 8;
             this.btnExcluir.Text = "EXCLUIR";
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnDeletar_Click);
             // 
             // txtSenha
             // 
@@ -180,6 +221,57 @@
             this.dataGridView1.Size = new System.Drawing.Size(514, 450);
             this.dataGridView1.TabIndex = 2;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(140, 16);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(18, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "ID";
+            // 
+            // txtID
+            // 
+            this.txtID.Enabled = false;
+            this.txtID.Location = new System.Drawing.Point(174, 13);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(100, 20);
+            this.txtID.TabIndex = 14;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(18, 215);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(86, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "DATA CRIAÇÃO";
+            // 
+            // txtDataAlteracao
+            // 
+            this.txtDataAlteracao.Enabled = false;
+            this.txtDataAlteracao.Location = new System.Drawing.Point(162, 245);
+            this.txtDataAlteracao.Name = "txtDataAlteracao";
+            this.txtDataAlteracao.Size = new System.Drawing.Size(100, 20);
+            this.txtDataAlteracao.TabIndex = 16;
+            // 
+            // txtDataCriacao
+            // 
+            this.txtDataCriacao.Enabled = false;
+            this.txtDataCriacao.Location = new System.Drawing.Point(15, 245);
+            this.txtDataCriacao.Name = "txtDataCriacao";
+            this.txtDataCriacao.Size = new System.Drawing.Size(100, 20);
+            this.txtDataCriacao.TabIndex = 17;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(159, 214);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(103, 13);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "DATA ALTERAÇÃO";
+            // 
             // FrmUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -214,5 +306,13 @@
         private System.Windows.Forms.TextBox txtCPF;
         private System.Windows.Forms.PageSetupDialog pageSetupDialog1;
         private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.ComboBox cbmFiltra;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtDataCriacao;
+        private System.Windows.Forms.TextBox txtDataAlteracao;
     }
 }
