@@ -25,5 +25,18 @@ DataAlteracao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
    
 
 );
+
+
+create table if not exists Usuarios (
+Id int auto_increment primary key,
+NomeCompleto varchar(255) not null,
+CPF varchar(15) not null,
+Email varchar(255) not null,
+Senha varchar(255) not null,
+DataCriacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+DataAlteracao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+status int not null
+);
+
    
 
