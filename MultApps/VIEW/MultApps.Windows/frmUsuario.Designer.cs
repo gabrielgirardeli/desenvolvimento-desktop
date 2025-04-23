@@ -30,6 +30,7 @@
         {
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbmFiltra = new System.Windows.Forms.ComboBox();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtDataCriacao = new System.Windows.Forms.TextBox();
@@ -51,7 +52,6 @@
             this.txtCPF = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
-            this.cbmFiltra = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -90,8 +90,16 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(291, 450);
+            this.panel1.Size = new System.Drawing.Size(291, 697);
             this.panel1.TabIndex = 1;
+            // 
+            // cbmFiltra
+            // 
+            this.cbmFiltra.FormattingEnabled = true;
+            this.cbmFiltra.Location = new System.Drawing.Point(15, 316);
+            this.cbmFiltra.Name = "cbmFiltra";
+            this.cbmFiltra.Size = new System.Drawing.Size(121, 21);
+            this.cbmFiltra.TabIndex = 4;
             // 
             // maskedTextBox1
             // 
@@ -99,7 +107,7 @@
             this.maskedTextBox1.Mask = "999,999,999,99";
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(164, 20);
-            this.maskedTextBox1.TabIndex = 19;
+            this.maskedTextBox1.TabIndex = 3;
             // 
             // label8
             // 
@@ -116,7 +124,7 @@
             this.txtDataCriacao.Location = new System.Drawing.Point(15, 245);
             this.txtDataCriacao.Name = "txtDataCriacao";
             this.txtDataCriacao.Size = new System.Drawing.Size(100, 20);
-            this.txtDataCriacao.TabIndex = 17;
+            this.txtDataCriacao.TabIndex = 6;
             // 
             // txtDataAlteracao
             // 
@@ -124,7 +132,7 @@
             this.txtDataAlteracao.Location = new System.Drawing.Point(162, 245);
             this.txtDataAlteracao.Name = "txtDataAlteracao";
             this.txtDataAlteracao.Size = new System.Drawing.Size(100, 20);
-            this.txtDataAlteracao.TabIndex = 16;
+            this.txtDataAlteracao.TabIndex = 7;
             // 
             // label7
             // 
@@ -141,7 +149,7 @@
             this.txtID.Location = new System.Drawing.Point(174, 13);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(100, 20);
-            this.txtID.TabIndex = 14;
+            this.txtID.TabIndex = 1;
             // 
             // label6
             // 
@@ -163,12 +171,14 @@
             // 
             // btnSalvar
             // 
+            this.btnSalvar.BackColor = System.Drawing.Color.Black;
+            this.btnSalvar.ForeColor = System.Drawing.Color.White;
             this.btnSalvar.Location = new System.Drawing.Point(57, 400);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(152, 23);
             this.btnSalvar.TabIndex = 10;
             this.btnSalvar.Text = "SALVAR";
-            this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.UseVisualStyleBackColor = false;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnEditar
@@ -195,7 +205,7 @@
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(164, 20);
-            this.txtSenha.TabIndex = 7;
+            this.txtSenha.TabIndex = 5;
             // 
             // label4
             // 
@@ -211,7 +221,7 @@
             this.txtEmail.Location = new System.Drawing.Point(110, 130);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(164, 20);
-            this.txtEmail.TabIndex = 5;
+            this.txtEmail.TabIndex = 4;
             // 
             // label3
             // 
@@ -236,7 +246,7 @@
             this.txtNome.Location = new System.Drawing.Point(110, 51);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(164, 20);
-            this.txtNome.TabIndex = 1;
+            this.txtNome.TabIndex = 2;
             // 
             // label1
             // 
@@ -260,28 +270,21 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(291, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(509, 450);
+            this.dataGridView1.Size = new System.Drawing.Size(826, 697);
             this.dataGridView1.TabIndex = 2;
-            // 
-            // cbmFiltra
-            // 
-            this.cbmFiltra.FormattingEnabled = true;
-            this.cbmFiltra.Location = new System.Drawing.Point(15, 316);
-            this.cbmFiltra.Name = "cbmFiltra";
-            this.cbmFiltra.Size = new System.Drawing.Size(121, 21);
-            this.cbmFiltra.TabIndex = 4;
             // 
             // FrmUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1117, 697);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtCPF);
             this.Name = "FrmUsuario";
             this.Text = "frmUsuario";
+            this.Load += new System.EventHandler(this.FrmUsuario_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

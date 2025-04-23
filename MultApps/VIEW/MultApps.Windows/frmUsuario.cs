@@ -18,11 +18,11 @@ namespace MultApps.Windows
         public FrmUsuario()
         {
             InitializeComponent();
-            var status = new[] { "ativo", "inativo" };
+            var status = new[] { "inativo", "ativo" };
             var filtros = new[] { "todos", "ativos", "inativos" };
             cmbStatus.Items.AddRange(status);
             cbmFiltra.Items.AddRange(filtros);
-            cmbStatus.SelectedIndex = 0;
+            cmbStatus.SelectedIndex = 1;
           
           
          
@@ -53,7 +53,8 @@ namespace MultApps.Windows
                 {
 
                     MessageBox.Show($"Erro ao cadastrar o usuário {usuario.NomeCompleto}");
-
+                    CarregarTodosUsuario();
+                    limparCampos();
                 }
             }
             catch (Exception)
@@ -119,7 +120,30 @@ namespace MultApps.Windows
 
         }
 
-     
+        private void FrmUsuario_Load(object sender, EventArgs e)
+        {
+            CarregarTodosUsuario();
+        }
+
+        private void  CarregarTodosUsuario()
+        {
+            var usuarioRepositorio = new UsuarioRepositories();
+            var listarUsuario = usuarioRepositorio.listarUsuario();
+            dataGridView1.DataSource = listarUsuario;
+        }
+
+        private void limparCampos()
+        {
+            txtCPF.Clear();
+            txtEmail.Clear();
+            txtNome.Clear();
+            txtSenha.Clear();
+            cbmFiltra.SelectedIndex = 1;
+            txtDataCriacao.Clear();
+            txtDataAlteracao.Clear();
+
+        }
+
     }
 }
 
