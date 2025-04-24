@@ -100,6 +100,7 @@
             this.cbmFiltra.Name = "cbmFiltra";
             this.cbmFiltra.Size = new System.Drawing.Size(121, 21);
             this.cbmFiltra.TabIndex = 4;
+            this.cbmFiltra.SelectedIndexChanged += new System.EventHandler(this.cbmFiltra_SelectedIndexChanged);
             // 
             // maskedTextBox1
             // 
@@ -272,6 +273,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(826, 697);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // FrmUsuario
             // 

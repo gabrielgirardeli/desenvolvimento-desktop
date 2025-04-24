@@ -7,6 +7,7 @@ using MultApps.Models.repositories;
 using System.Collections.Generic;
 using MultApps.Models.Entities;
 using System.Diagnostics.Eventing.Reader;
+using MultApps.Models.Services;
 
 
 namespace MultApps.Windows
@@ -23,6 +24,7 @@ namespace MultApps.Windows
             cmbStatus.Items.AddRange(status);
             cbmFiltra.Items.AddRange(filtros);
             cmbStatus.SelectedIndex = 1;
+            cbmFiltra.SelectedIndex = 0;
           
           
          
@@ -32,34 +34,47 @@ namespace MultApps.Windows
         {
             try
             {
+                
+                
                 var usuario = new Usuario(); 
                 usuario.NomeCompleto = txtNome.Text;
                 usuario.CPF = txtCPF.Text;
                 usuario.Email = txtEmail.Text;
-                usuario.Senha = txtSenha.Text;
+                usuario.Senha = CriptografiaService.Criptografar(txtSenha.Text);
                 usuario.Status = (StatusEnum)cmbStatus.SelectedIndex;
 
                 var usuarioRepositories = new UsuarioRepositories();
-                
-
-                var resultado = usuarioRepositories.CadastrarUsuario(usuario);
 
 
-                if (TemCamposEmBranco())
+
+                // Verifica se o email já existe.
+                var emailJaExiste = usuarioRepositories.emailExiste(usuario.Email);
+                if (emailJaExiste)
+                {
+                    MessageBox.Show($"O email {usuario.Email} já está cadastrado.");
+                    txtEmail.Focus();
+                    return;
+                }
+
+                var sucesso = usuarioRepositories.CadastrarUsuario(usuario);
+
+
+                if (sucesso)
                 {
                     MessageBox.Show($"Usuario {usuario.NomeCompleto} cadastra com sucesso!");
+                    CarregarTodosUsuario();
+                    limparCampos();
                 }
                 else
                 {
 
                     MessageBox.Show($"Erro ao cadastrar o usuário {usuario.NomeCompleto}");
-                    CarregarTodosUsuario();
-                    limparCampos();
+                  
                 }
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-
+                Console.WriteLine(exception);
                 throw;
             }
 
@@ -144,6 +159,65 @@ namespace MultApps.Windows
 
         }
 
+        private void cbmFiltra_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var usuarioRepositorio = new UsuarioRepositories();
+            switch (cbmFiltra.SelectedIndex)
+            {
+
+                case 0:
+                    CarregarTodosUsuario();
+                    break;
+
+
+                    case 1:
+                    var usuariosAtivos = usuarioRepositorio.listarUsuarioPorSatus(1);
+                    dataGridView1.DataSource = usuariosAtivos;
+                    break;
+
+                    case 2:
+                    var usuariosInativos = usuarioRepositorio.listarUsuarioPorSatus(0);
+                    dataGridView1.DataSource = usuariosInativos;
+                    break;
+
+                   
+            }
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.RowIndex < 0)
+            {
+                MessageBox.Show($"Houve um erro ao clicar duas vezes sobre o Grid");
+                return;
+            }
+
+            // Obtenha a linha selecionada
+            DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+            // Obtenha o ID da categoria da linha selecionada
+            var categoriaId = (int)row.Cells[0].Value;
+
+            // Use o método ObterCategoriaPorId para buscar os dados da categoria no banco de dados
+            var usuarioRepositories = new UsuarioRepositories();
+            var usuario = usuarioRepositories.ObterCategoriaPorId(categoriaId);
+
+            if (usuario == null)
+            {
+                MessageBox.Show($"Categoria: #{categoriaId} não encontrada");
+                return;
+            }
+            // Preencha os campos de edição com os dados obtidos
+            txtID.Text = usuario.Id.ToString();
+            txtNome.Text = usuario.NomeCompleto;
+            cmbStatus.SelectedIndex = (int)usuario.Status;
+            txtDataCriacao.Text = usuario.DataCriacao.ToString("dd/MM/yyyy HH:mm");
+            txtDataAlteracao.Text = usuario.DataAlteracao.ToString("dd/MM/yyyy HH:mm");
+
+            btnExcluir.Enabled = true;
+            btnSalvar.Text = "salvar alteracao";
+        }
     }
 }
 
