@@ -153,7 +153,7 @@ namespace MultApps.Models.repositories
             using (IDbConnection db = new MySqlConnection(ConnectionString))
             {
                 var comandoSql = @"SELECT id AS  Id, NomeCompleto AS NomeCompleto, email AS Email, senha AS Senha, status AS Status
-                                   FROM Email WHERE Email = @Email";
+                                   FROM usuario WHERE email = @Email";
                 var parametros = new DynamicParameters();
                 parametros.Add("@Email", email);
                 var resultado = db.Query<Usuario>(comandoSql, parametros).FirstOrDefault();
@@ -168,13 +168,13 @@ namespace MultApps.Models.repositories
         {
             using (IDbConnection db = new MySqlConnection(ConnectionString))
             {
-                var comandoSql = @"UPDATE usuario  SET senha = @Senha  WHERE email = @Email";
+                var comandoSql = @"UPDATE usuario  SET Senha = @Senha  WHERE email = @Email";
 
                 var parametros = new DynamicParameters();
                 parametros.Add("@Senha", novasenha);
                 parametros.Add("@Email", email);
                 
-                var resposta = db.Execute(comandoSql);
+                var resposta = db.Execute(comandoSql, parametros);
 
                 return resposta > 0;
 
