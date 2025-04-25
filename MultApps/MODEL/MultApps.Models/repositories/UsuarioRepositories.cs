@@ -134,12 +134,12 @@ namespace MultApps.Models.repositories
         }
 
 
-        public Usuario ObterCategoriaPorId(int id)
+        public Usuario ObterUsuarioPorId(int id)
         {
             using (IDbConnection db = new MySqlConnection(ConnectionString))
             {
-                var comandoSql = @"SELECT id, nome,  DataCriacao,  DataAlteracao, status
-                                   FROM categoria WHERE id = @Id";
+                var comandoSql = @"SELECT id AS  Id, NomeCompleto AS NomeCompleto,  DataCriacao AS DataCriacao,  DataAlteracao AS DataAlteracao, status AS Status
+                                   FROM usuario WHERE id = @Id";
                 var parametros = new DynamicParameters();
                 parametros.Add("@Id", id);
                 var resultado = db.Query<Usuario>(comandoSql, parametros).FirstOrDefault();
@@ -148,8 +148,44 @@ namespace MultApps.Models.repositories
         }
 
 
+        public Usuario ObterUsuarioPorEmail(string email)
+        {
+            using (IDbConnection db = new MySqlConnection(ConnectionString))
+            {
+                var comandoSql = @"SELECT id AS  Id, NomeCompleto AS NomeCompleto, email AS Email, senha AS Senha, status AS Status
+                                   FROM Email WHERE Email = @Email";
+                var parametros = new DynamicParameters();
+                parametros.Add("@Email", email);
+                var resultado = db.Query<Usuario>(comandoSql, parametros).FirstOrDefault();
+                return resultado;
+            }
+        }
+
+
+
+
+        public bool AtualizarSenha(string novasenha, string email)
+        {
+            using (IDbConnection db = new MySqlConnection(ConnectionString))
+            {
+                var comandoSql = @"UPDATE usuario  SET senha = @Senha  WHERE email = @Email";
+
+                var parametros = new DynamicParameters();
+                parametros.Add("@Senha", novasenha);
+                parametros.Add("@Email", email);
+                
+                var resposta = db.Execute(comandoSql);
+
+                return resposta > 0;
+
+
+            }
+        }
+
+
+
     }
-      
+
 
 
 }

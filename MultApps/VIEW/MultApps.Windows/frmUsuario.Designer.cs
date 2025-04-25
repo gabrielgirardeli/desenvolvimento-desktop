@@ -31,7 +31,7 @@
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cbmFiltra = new System.Windows.Forms.ComboBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.mskCPF = new System.Windows.Forms.MaskedTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtDataCriacao = new System.Windows.Forms.TextBox();
             this.txtDataAlteracao = new System.Windows.Forms.TextBox();
@@ -68,7 +68,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.cbmFiltra);
-            this.panel1.Controls.Add(this.maskedTextBox1);
+            this.panel1.Controls.Add(this.mskCPF);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.txtDataCriacao);
             this.panel1.Controls.Add(this.txtDataAlteracao);
@@ -102,13 +102,13 @@
             this.cbmFiltra.TabIndex = 4;
             this.cbmFiltra.SelectedIndexChanged += new System.EventHandler(this.cbmFiltra_SelectedIndexChanged);
             // 
-            // maskedTextBox1
+            // mskCPF
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(110, 88);
-            this.maskedTextBox1.Mask = "999,999,999,99";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(164, 20);
-            this.maskedTextBox1.TabIndex = 3;
+            this.mskCPF.Location = new System.Drawing.Point(110, 88);
+            this.mskCPF.Mask = "999,999,999,99";
+            this.mskCPF.Name = "mskCPF";
+            this.mskCPF.Size = new System.Drawing.Size(164, 20);
+            this.mskCPF.TabIndex = 3;
             // 
             // label8
             // 
@@ -319,7 +319,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtDataCriacao;
         private System.Windows.Forms.TextBox txtDataAlteracao;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox mskCPF;
         private System.Windows.Forms.ComboBox cbmFiltra;
     }
 }

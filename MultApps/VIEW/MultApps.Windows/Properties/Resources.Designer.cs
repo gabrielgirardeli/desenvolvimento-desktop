@@ -133,9 +133,29 @@ namespace MultApps.Windows.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap multi_sistema_logo_png_seeklogo_95891 {
+            get {
+                object obj = ResourceManager.GetObject("multi-sistema-logo-png_seeklogo-95891", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pngtree_letter_g_logo_png_image_4000891 {
             get {
                 object obj = ResourceManager.GetObject("pngtree-letter-g-logo-png-image_4000891", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pngwing_com__11_ {
+            get {
+                object obj = ResourceManager.GetObject("pngwing.com (11)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

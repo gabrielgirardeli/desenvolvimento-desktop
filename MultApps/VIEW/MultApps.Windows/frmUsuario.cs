@@ -38,7 +38,7 @@ namespace MultApps.Windows
                 
                 var usuario = new Usuario(); 
                 usuario.NomeCompleto = txtNome.Text;
-                usuario.CPF = txtCPF.Text;
+                usuario.CPF = mskCPF.Text;
                 usuario.Email = txtEmail.Text;
                 usuario.Senha = CriptografiaService.Criptografar(txtSenha.Text);
                 usuario.Status = (StatusEnum)cmbStatus.SelectedIndex;
@@ -91,7 +91,7 @@ namespace MultApps.Windows
 
         private bool TemCamposEmBranco()
         {
-            if (string.IsNullOrWhiteSpace(txtNome.Text))  return true;
+            if (string.IsNullOrWhiteSpace(txtNome.Text))  
             {
                 MessageBox.Show("compo nome é obrigatorio");
                 txtNome.Focus();
@@ -100,15 +100,15 @@ namespace MultApps.Windows
              }
 
 
-            if (string.IsNullOrWhiteSpace(txtCPF.Text)) return true;
+            if (string.IsNullOrWhiteSpace(mskCPF.Text)) 
             {
                 MessageBox.Show("compo CPF é obrigatorio");
-                txtCPF.Focus();
+                mskCPF.Focus();
                 return true;
 
             }
 
-            if (string.IsNullOrWhiteSpace(txtEmail.Text)) return true;
+            if (string.IsNullOrWhiteSpace(txtEmail.Text)) 
             {
                 MessageBox.Show("compo nome é obrigatorio");
                 txtEmail.Focus();
@@ -116,7 +116,7 @@ namespace MultApps.Windows
 
             }
 
-            if (string.IsNullOrWhiteSpace(txtSenha.Text)) return true;
+            if (string.IsNullOrWhiteSpace(txtSenha.Text)) 
             {
                 MessageBox.Show("compo nome é obrigatorio");
                 txtSenha.Focus();
@@ -149,7 +149,7 @@ namespace MultApps.Windows
 
         private void limparCampos()
         {
-            txtCPF.Clear();
+            mskCPF.Clear();
             txtEmail.Clear();
             txtNome.Clear();
             txtSenha.Clear();
@@ -197,27 +197,31 @@ namespace MultApps.Windows
             DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
 
             // Obtenha o ID da categoria da linha selecionada
-            var categoriaId = (int)row.Cells[0].Value;
+            var usuarioId = (int)row.Cells[0].Value;
 
             // Use o método ObterCategoriaPorId para buscar os dados da categoria no banco de dados
             var usuarioRepositories = new UsuarioRepositories();
-            var usuario = usuarioRepositories.ObterCategoriaPorId(categoriaId);
+            var usuario = usuarioRepositories.ObterUsuarioPorId(usuarioId);
 
             if (usuario == null)
             {
-                MessageBox.Show($"Categoria: #{categoriaId} não encontrada");
+                MessageBox.Show($"Categoria: #{usuarioId} não encontrada");
                 return;
             }
             // Preencha os campos de edição com os dados obtidos
             txtID.Text = usuario.Id.ToString();
             txtNome.Text = usuario.NomeCompleto;
+            mskCPF.Text = usuario.CPF;
             cmbStatus.SelectedIndex = (int)usuario.Status;
             txtDataCriacao.Text = usuario.DataCriacao.ToString("dd/MM/yyyy HH:mm");
             txtDataAlteracao.Text = usuario.DataAlteracao.ToString("dd/MM/yyyy HH:mm");
 
             btnExcluir.Enabled = true;
             btnSalvar.Text = "salvar alteracao";
+
         }
+
+
     }
 }
 
