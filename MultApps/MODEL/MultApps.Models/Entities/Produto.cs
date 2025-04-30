@@ -3,11 +3,18 @@
 
 namespace MultApps.Models.Entities
 {
-    internal class Produto : EntidadesBase
+     public class Produto
     {
+        public int Id { get; set; }
         public int CategoriaId { get; set; }
         public string Nome { get; set; }
         public decimal Preco { get; set; }
-        public int QuantidadeEmEstoque { get; set; }
+        public int Estoque { get; set; }
+        public string Descricao { get; set; }
+        public string Categoria {  get; set; }
+        public  string UrlImagem { get; set; }
+        public bool  Ativo { get; set; }    
+
+
     }
 }
