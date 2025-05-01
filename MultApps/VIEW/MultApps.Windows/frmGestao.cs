@@ -30,7 +30,7 @@ namespace MultApps.Windows
             InitializeComponent();
            
             cmbCategoria.SelectedIndex = 0;
-            cmbCadastraCategoria.SelectedIndex = 0;
+          
 
             cmbStatus.Items.Add("Todos");
             cmbStatus.Items.Add("Ativos");
@@ -174,10 +174,13 @@ namespace MultApps.Windows
 
         private void frmGestao_Load(object sender, EventArgs e)
         {
-            CarregarCategorias();
-            cmbCadastraCategoria.SelectedIndex = 0;
-            CarregarTodosProdutos();
+         
 
+            // só define o índice se houver itens
+            if (cmbCadastraCategoria.Items.Count > 0)
+                cmbCadastraCategoria.SelectedIndex = 0;
+
+            CarregarTodosProdutos();
 
             cmbStatus.Items.Clear();
             cmbStatus.Items.Add("Todos");
@@ -187,6 +190,7 @@ namespace MultApps.Windows
 
 
         }
+      
 
         private void CarregarTodosProdutos()
         {
@@ -194,12 +198,7 @@ namespace MultApps.Windows
             var listarProduto = produtoRepositorio.listarProduto();
             dataGridView1.DataSource = listarProduto;
         }
-        private void CarregarCategorias ()
-        {
-            var produtoRepositorio = new ProdutoRepositories();
-            var listarProduto = produtoRepositorio.listarProduto();
-            dataGridView1.DataSource = listarProduto;
-        }
+      
 
         private void cmbStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -253,6 +252,23 @@ namespace MultApps.Windows
             {
                 MessageBox.Show("Erro ao deletar.");
             }
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            txtNome.Clear();
+            txtDescricao.Clear();
+            txtPreco.Clear();
+            txtEstoque.Clear();
+            txtURL.Clear();
+
+            cmbCategoria.SelectedIndex = -1; // ou 0, se você tiver certeza que tem ao menos uma opção
+            cmbCadastraCategoria.SelectedIndex = -1;
+
+            rbAtivo.Checked = false;
+            rbInativo.Checked = false;
+
+            txtNome.Focus();
         }
     }
 

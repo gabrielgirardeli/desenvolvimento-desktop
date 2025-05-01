@@ -17,6 +17,24 @@ namespace MultApps.Models.repositories
         public string ConnectionString = "Server=localhost;Database=multapps_dev;Uid=root;Pwd=root";
 
 
+
+        
+
+        public List<Categoria> ListarCategorias()
+        {
+            using (var db = new MySqlConnection(ConnectionString))
+            {
+                string sql = "SELECT Id, Nome FROM categoria"; // Tabela no seu banco
+                return db.Query<Categoria>(sql).ToList();
+            }
+        }
+
+
+
+
+
+
+
         public bool CadastrarCategoria(Categoria categoria)
         {
             using (IDbConnection db = new MySqlConnection(ConnectionString))

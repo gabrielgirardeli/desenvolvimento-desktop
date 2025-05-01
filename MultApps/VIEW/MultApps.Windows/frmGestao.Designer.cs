@@ -92,6 +92,14 @@
             // cmbCadastraCategoria
             // 
             this.cmbCadastraCategoria.FormattingEnabled = true;
+            this.cmbCadastraCategoria.Items.AddRange(new object[] {
+            "Todos",
+            "Eletrônico",
+            "Roupa e Acessorio",
+            "Alimento e Bebidas ",
+            "Beleza e Saúde",
+            "Outros",
+            " "});
             this.cmbCadastraCategoria.Location = new System.Drawing.Point(1019, 262);
             this.cmbCadastraCategoria.Name = "cmbCadastraCategoria";
             this.cmbCadastraCategoria.Size = new System.Drawing.Size(121, 21);
@@ -100,6 +108,8 @@
             // cmbStatus
             // 
             this.cmbStatus.FormattingEnabled = true;
+            this.cmbStatus.Items.AddRange(new object[] {
+            "Todos"});
             this.cmbStatus.Location = new System.Drawing.Point(892, 262);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(121, 21);
@@ -144,6 +154,7 @@
             this.btnLimpar.TabIndex = 17;
             this.btnLimpar.Text = "LIMPAR";
             this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // btnSalvar
             // 
@@ -274,6 +285,7 @@
             "Roupa e Acessorio",
             "Alimento e Bebidas ",
             "Beleza e Saúde",
+            "Outros",
             " "});
             this.cmbCategoria.Location = new System.Drawing.Point(473, 86);
             this.cmbCategoria.Name = "cmbCategoria";

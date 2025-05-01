@@ -68,7 +68,7 @@ namespace MultApps.Models.repositories
             {
                 string sql = @"UPDATE Produto 
                            SET Nome = @Nome, Descricao = @Descricao, CategoriaId = @CategoriaId, 
-                               Preco = @Preco, QuantidadeEmEstoque = @QuantidadeEmEstoque, 
+                               Preco = @Preco, Estoque = @Estoque, 
                                UrlImagem = @UrlImagem, Ativo = @Ativo
                            WHERE Id = @Id";
                 int resultado = db.Execute(sql, produto);
@@ -109,7 +109,7 @@ namespace MultApps.Models.repositories
         {
             using (IDbConnection db = new MySqlConnection(ConnectionString))
             {
-                var comandoSql = @"SELECT Id, Nome, Descricao, CategoriaId, Preco, QuantidadeEmEstoque, UrlImagem, Ativo 
+                var comandoSql = @"SELECT Id, Nome, Descricao, CategoriaId, Preco, Estoque, UrlImagem, Ativo 
                            FROM produto 
                            WHERE Ativo = @Status";
 
