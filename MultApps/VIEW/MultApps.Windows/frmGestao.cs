@@ -1,25 +1,12 @@
-﻿using MultApps.Models.Entities.Abstract;
-using MultApps.Models.Entities;
+﻿using MultApps.Models.Entities;
+using MultApps.Models.repositories;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Reflection.Emit;
-using System.Runtime.ConstrainedExecution;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Menu;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using MultApps.Models.Enums;
-using MultApps.Models.repositories;
-using MultApps.Models.Services;
-using System.Security.Cryptography;
 
 namespace MultApps.Windows
 {
@@ -43,6 +30,8 @@ namespace MultApps.Windows
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             if (TemCamposEmBranco()) return;
+         
+
 
             try
             {
@@ -50,7 +39,7 @@ namespace MultApps.Windows
                 {
                     Nome = txtNome.Text,
                     Descricao = txtDescricao.Text,
-                    CategoriaId = (int)cmbCategoria.SelectedValue,
+                    CategoriaId = Convert.ToInt32(cmbCategoria.SelectedValue),
                     Preco = decimal.Parse(txtPreco.Text),
                     Estoque = int.Parse(txtEstoque.Text),
                     UrlImagem = txtURL.Text,
@@ -154,6 +143,8 @@ namespace MultApps.Windows
             var repo = new ProdutoRepositories();
             var produto = repo.ListarTodos().FirstOrDefault(p => p.Nome == nomeProduto);
 
+        
+
             if (produto == null)
             {
                 MessageBox.Show($"Produto {nomeProduto} não encontrado.");
@@ -169,6 +160,13 @@ namespace MultApps.Windows
             btnLimpar.Enabled = true;
         }
 
+        private void AddImageColumnToDataGridView()
+        {
+            DataGridViewImageColumn imageColumn = new DataGridViewImageColumn();
+            imageColumn.Name = "Imagem";
+            imageColumn.HeaderText = "Imagem";
+            dataGridView1.Columns.Add(imageColumn);
+        }
 
 
 
@@ -190,15 +188,14 @@ namespace MultApps.Windows
 
 
         }
-      
+
 
         private void CarregarTodosProdutos()
         {
-            var produtoRepositorio = new ProdutoRepositories();
-            var listarProduto = produtoRepositorio.listarProduto();
-            dataGridView1.DataSource = listarProduto;
+
+
+            
         }
-      
 
         private void cmbStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -262,7 +259,7 @@ namespace MultApps.Windows
             txtEstoque.Clear();
             txtURL.Clear();
 
-            cmbCategoria.SelectedIndex = -1; // ou 0, se você tiver certeza que tem ao menos uma opção
+            cmbCategoria.SelectedIndex = -1; 
             cmbCadastraCategoria.SelectedIndex = -1;
 
             rbAtivo.Checked = false;
@@ -270,6 +267,11 @@ namespace MultApps.Windows
 
             txtNome.Focus();
         }
+       
+            
+          
+        }
+
     }
 
 }   

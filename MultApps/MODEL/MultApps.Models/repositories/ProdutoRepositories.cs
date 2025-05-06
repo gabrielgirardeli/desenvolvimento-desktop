@@ -1,12 +1,15 @@
 ﻿using Dapper;
 using MultApps.Models.Entities;
+using MultApps.Models.Entities.Abstract;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MultApps.Models.repositories
 {
@@ -18,8 +21,8 @@ namespace MultApps.Models.repositories
         {
             using (IDbConnection db = new MySqlConnection(ConnectionString))
             {
-                var sql = "SELECT Id, Nome FROM categoria";
-                return db.Query<Categoria>(sql).AsList();
+                string sql = "SELECT Id, Nome FROM categoria";
+                return db.Query<Categoria>(sql).ToList();
             }
         }
 
@@ -27,8 +30,8 @@ namespace MultApps.Models.repositories
         {
             using (IDbConnection db = new MySqlConnection(ConnectionString))
             {
-                string sql = @"INSERT INTO Produto (Nome, Descricao, CategoriaId, Preco, QuantidadeEmEstoque, UrlImagem, Ativo)
-                           VALUES (@Nome, @Descricao, @CategoriaId, @Preco, @QuantidadeEmEstoque, @UrlImagem, @Ativo)";
+                string sql = @"INSERT INTO Produto (Nome, Descricao, CategoriaId, Preco, Estoque, UrlImagem, Ativo)
+                           VALUES (@Nome, @Descricao, @CategoriaId, @Preco, @Estoque, @UrlImagem, @Ativo)";
                 int resultado = db.Execute(sql, produto);
                 return resultado > 0;
             }
@@ -44,7 +47,7 @@ namespace MultApps.Models.repositories
             }
         }
 
-        public List<Produto> listarProduto()
+        public List<Produto> ListarProduto()
         {
             using (IDbConnection db = new MySqlConnection(ConnectionString))
             {
@@ -88,19 +91,15 @@ namespace MultApps.Models.repositories
 
         public List<Produto> ListarTodos()
         {
-            return listarProduto();
+            return ListarProduto();
         }
 
         public bool DeletarPorNome(string nome)
         {
             using (IDbConnection db = new MySqlConnection(ConnectionString))
             {
-                var comandoSql = @"DELETE FROM produto WHERE Nome = @Nome";
-
-                var parametros = new DynamicParameters();
-                parametros.Add("@Nome", nome);
-
-                var linhasAfetadas = db.Execute(comandoSql, parametros);
+                string sql = "DELETE FROM Produto WHERE Nome = @Nome";
+                int linhasAfetadas = db.Execute(sql, new { Nome = nome });
                 return linhasAfetadas > 0;
             }
         }
@@ -109,23 +108,20 @@ namespace MultApps.Models.repositories
         {
             using (IDbConnection db = new MySqlConnection(ConnectionString))
             {
-                var comandoSql = @"SELECT Id, Nome, Descricao, CategoriaId, Preco, Estoque, UrlImagem, Ativo 
-                           FROM produto 
+                string sql = @"SELECT Id, Nome, Descricao, CategoriaId, Preco, Estoque, UrlImagem, Ativo 
+                           FROM Produto 
                            WHERE Ativo = @Status";
 
-                var parametros = new DynamicParameters();
-                parametros.Add("@Status", status);
-
-                var produtos = db.Query<Produto>(comandoSql, parametros).ToList();
+                var produtos = db.Query<Produto>(sql, new { Status = status }).ToList();
 
                 var dataTable = new DataTable();
                 dataTable.Columns.Add("Id", typeof(int));
                 dataTable.Columns.Add("Nome", typeof(string));
-                dataTable.Columns.Add("Descrição", typeof(string));
+                dataTable.Columns.Add("Descricao", typeof(string));
                 dataTable.Columns.Add("CategoriaId", typeof(int));
-                dataTable.Columns.Add("Preço", typeof(decimal));
+                dataTable.Columns.Add("Preco", typeof(decimal));
                 dataTable.Columns.Add("Estoque", typeof(int));
-                dataTable.Columns.Add("Imagem", typeof(string));
+                dataTable.Columns.Add("UrlImagem", typeof(string));
                 dataTable.Columns.Add("Ativo", typeof(bool));
 
                 foreach (var produto in produtos)

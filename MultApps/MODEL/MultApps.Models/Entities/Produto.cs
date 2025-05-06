@@ -1,9 +1,10 @@
 ﻿using MultApps.Models.Entities.Abstract;
+using static System.Net.Mime.MediaTypeNames;
 
 
 namespace MultApps.Models.Entities
 {
-     public class Produto
+    public class Produto
     {
         public int Id { get; set; }
         public int CategoriaId { get; set; }
@@ -11,10 +12,11 @@ namespace MultApps.Models.Entities
         public decimal Preco { get; set; }
         public int Estoque { get; set; }
         public string Descricao { get; set; }
-        public string Categoria {  get; set; }
-        public  string UrlImagem { get; set; }
-        public bool  Ativo { get; set; }    
-
+        public string Categoria { get; set; }
+        public string UrlImagem { get; set; }
+        public bool Ativo { get; set; }
+        public byte[] Imagem { get; set; }
+        public string Status { get; set; }
 
     }
 }
