@@ -116,7 +116,7 @@ namespace MultApps.Windows
         private void AtualizarGrid()
         {
             var repo = new ProdutoRepositories();
-            dataGridView1.DataSource = repo.listarProduto();
+            dataGridView1.DataSource = repo.ListarProduto();
         }
 
         private void limparCampos()
@@ -274,5 +274,5 @@ namespace MultApps.Windows
 
     }
 
-}   
+
 
